@@ -1,13 +1,16 @@
-from database import db  # Use a instância de db existente
+from sqlalchemy import Column, Integer, String, Float
+from sqlalchemy.ext.declarative import declarative_base
 
-class Lead(db.Model):
+Base = declarative_base()
+
+class Lead(Base):
     __tablename__ = 'leads'
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(100), nullable=False)
-    latitude = db.Column(db.Float, nullable=False)
-    longitude = db.Column(db.Float, nullable=False)
-    temperature = db.Column(db.Float, nullable=False)
-    interest = db.Column(db.String(200), nullable=False)
+    id = Column(Integer, primary_key=True)
+    name = Column(String(100), nullable=False)
+    latitude = Column(Float, nullable=False)
+    longitude = Column(Float, nullable=False)
+    temperature = Column(Float, nullable=False)
+    interest = Column(String(200), nullable=False)
 
     def __init__(self, name, latitude, longitude, temperature, interest):
         self.name = name
