@@ -18,16 +18,20 @@ session = Session()
 def generate_leads():
     names = ['John Doe', 'Jane Smith', 'Chris Johnson', 'Patricia Brown', 'Michael Williams']
     interests = ['Tecnologia', 'Saúde', 'Educação', 'Marketing', 'Design']
+    emails = ['johndoe@gmail.com', 'janesmith@gmail.com', 'chrisjohnson@gmail.com', 'patriciabrown@gmail.com', 'michaelwilliams@gmail.com']
+    telefones = ['(11) 91234-5678', '(21) 98765-4321', '(31) 99876-5432', '(41) 94567-8901', '(51) 91234-6789']
 
     for _ in range(100):
         name = random.choice(names)
+        email = random.choice(emails)
+        telefone = random.choice(telefones)
         latitude = random.uniform(-90, 90)
         longitude = random.uniform(-180, 180)
         temperature = random.uniform(10, 40)
         interest = random.choice(interests)
 
         # Cria uma instância de Lead e adiciona à sessão
-        lead = Lead(name, latitude, longitude, temperature, interest)
+        lead = Lead(name, email, telefone, latitude, longitude, temperature, interest)
         session.add(lead)
 
     # Faz o commit de todas as operações no banco de dados
